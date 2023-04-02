@@ -1,0 +1,15 @@
+;program to find square root of given number 
+
+
+mvi 	c, 01h 
+mvi	e, 01h 
+lda 	00004 
+label: sbb c 
+j2 	lable1
+inr	c 
+inr	c 
+inr 	e
+jmp 	label
+label1: mov a,e 
+sta 	0001h 
+hlt 

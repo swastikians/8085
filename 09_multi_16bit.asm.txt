@@ -1,0 +1,20 @@
+;multiply two 16 bit no 
+
+lxi     h ,2756h 		; load first data 
+sdhl   				; store hl inot sp 
+lxi     h,3ef3h 		; get second data 
+xchg				;storre second data in de 
+lxi 	h, 0000h		;clear hl to store sum 
+lxi 	b, 0000h 		;clear bc to store carry 
+next: dad sp 			;hl = hl +sp 
+jnc ahead
+inx 	b 			;increment bc if there is carry 
+ahead:	dcx d			;decrement counter by 1 
+mov 	a,e			;for looping
+jhz 	next 			; "    "
+shld	0000h 			; store sum 
+mov 	l,c 
+mov 	h,b	
+shld 	0003h			;store carry 
+hlt 
+

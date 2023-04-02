@@ -1,0 +1,36 @@
+;program to find largest among array of data 
+
+
+;address 	data 
+;0000		06 	
+;0001		55
+;0002		22
+;0003		44
+;0004		11
+;0005		33
+;0006		66
+
+
+
+
+
+;ladel 	mnemonics 	comment 
+	lxi h, 0000h 	point to array size 
+	mov e,m 	get size of array 
+	inx h 		point to actual array
+	mov b,m 	load first number into b 
+	dcr c 		decrease in c 
+	inx h 		point to next location 
+	mov a,h 	get data 
+	cmp b		cmpare acc & b 
+	jnc skip 	if b>a skip 			
+
+
+
+skip : 
+mov b,a 	;if cy= 0 
+dcr c 		;decrement counter 
+jnz loop 
+lxi h ,0007h
+mov m,b 	;store largest 
+hlt 
